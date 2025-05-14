@@ -2,11 +2,11 @@ import * as z from "zod";
 
 const createClientEnv = () => {
   const EnvSchema = z.object({
-    NEXT_PUBLIC_API_URL: z.string(),
+    API_URL: z.string(),
   });
 
   const clientEnvVars = {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    API_URL: process.env.API_URL,
   };
 
   const parsedClientEnv = EnvSchema.safeParse(clientEnvVars);
@@ -20,6 +20,8 @@ const createClientEnv = () => {
         .join("\n")}
   `
     );
+  } else {
+    console.log("Client env is valid");
   }
 
   return parsedClientEnv.data ?? {};

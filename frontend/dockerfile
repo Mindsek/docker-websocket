@@ -14,7 +14,7 @@
     
     # Copie tout le code
     COPY . .
-    
+
     # Build Next.js
     RUN pnpm build
     
