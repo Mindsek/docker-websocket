@@ -1,5 +1,6 @@
 "use client";
 
+import { clientEnv } from "@/config/env-config";
 import { useEffect, useState } from "react";
 import { io, type Socket } from "socket.io-client";
 import { toast } from "sonner";
@@ -9,8 +10,7 @@ export function useSocket() {
   const [connected, setConnected] = useState(false);
 
   useEffect(() => {
-    const backendUrl =
-      process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+    const backendUrl = clientEnv.NEXT_PUBLIC_API_URL;
 
     const socketInstance = io(backendUrl, {
       transports: ["websocket"],
